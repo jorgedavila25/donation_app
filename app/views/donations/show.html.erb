@@ -1,3 +1,33 @@
 <div class="page-header">
-  <h1>These <small> are the details for this donation</small></h1>
+  <h1>These <small> are the details for this <%= @donation.donation_variation_type %> donation</small></h1>
+<dl class="dl-horizontal">
+  <dt>Donation Title</dt>
+  <dd><%= @donation.title %> </dd>
+  <dt>Donation Description</dt>
+  <dd><%= @donation.description %> </dd>
+  <% if @donation.donation_variation_type == "Experience" %>
+    <dt>Primary Contact Name</dt>
+    <dd><%= @donation.donation_variation.primary_contact_name %></dd>
+    <dt>Location on Map </dt>
+    <dd>
+        <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=450x300&zoom=15&markers=color:blue%7Clabel:E%7C#{@donation.donation_variation.latitude},#{@donation.donation_variation.longitude}" %>
+    </dd>
+  <% end %>
+
+  <% if @donation.donation_variation_type == "PhysicalItem" %>
+    <dt>Height</dt>
+    <dd><%= @donation.donation_variation.height %></dd>
+    <dt>Width</dt>
+    <dd><%= @donation.donation_variation.width %></dd>
+    <dt>Weight</dt>
+    <dd><%= @donation.donation_variation.weight %></dd>
+  <% end %>
+
+  <% if @donation.donation_variation_type == "Voucher" %>
+    <dt>Expiration Date</dt>
+    <dd><%= @donation.donation_variation.expiration_date %> </dd>
+  <% end %>
+<dl>
 </div>
+
+
