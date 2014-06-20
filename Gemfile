@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'ruby_gntp' # growl
 gem "active_model_serializers", :git => "git://github.com/rails-api/active_model_serializers.git"
 gem 'spring',        group: :development
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
