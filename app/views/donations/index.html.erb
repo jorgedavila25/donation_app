@@ -1,1 +1,25 @@
-hellooo
+<div class="page-header">
+  <h1>These <small> are your donations</small></h1>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Show</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @donations.each do |donation|%>
+    <tr>
+      <td><%= donation.id%></td>
+      <td><%= donation.title%></td>
+      <td><%= donation.description%></td>
+      <td><%= link_to('view this donation',donation_path(donation.id))%></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+
+<button type="button" class="btn btn-primary pull-right">Add a New Donation</button>
