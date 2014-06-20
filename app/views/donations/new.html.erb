@@ -3,26 +3,26 @@
 </div>
 <%= simple_form_for @donation do |f| %>
   <div class="form-group">
-    <%= f.input :title, input_html: { class: "form-control", style: "width:150px"} %>
-    <%= f.input :description,input_html: { class: "form-control", style: "width:150px" } %>
+    <%= f.input :title, input_html: { class: "form-control", style: "width:220px"} %>
+    <%= f.input :description,input_html: { class: "form-control", style: "width:220px" } %>
     Choose a variation
     <%= f.select(:donation_variation, ["Experience", "Physical Item", "Voucher"], class:"variation") %>
 
     <!-- when experience is chosen -->
-      <%= f.input :experience_primary_contact_name, :input_html => { value: "", id: "experience_primary_contact_name", class: "form-control", style: "width:150px"}  %>
-      <%= f.input :experience_latitude, :input_html => { value: "", id: "experience_latitude" ,class: "form-control", style: "width:150px" } %>
-      <%= f.input :experience_longitude, :input_html => { value: "", id: "experience_longitude",class: "form-control", style: "width:150px" } %>
+      <%= f.input :experience_primary_contact_name, :input_html => { value: "", id: "experience_primary_contact_name", class: "form-control", style: "width:220px"}  %>
+      <%= f.input :experience_latitude, :input_html => { value: "", id: "experience_latitude" ,class: "form-control", style: "width:220px" } %>
+      <%= f.input :experience_longitude, :input_html => { value: "", id: "experience_longitude",class: "form-control", style: "width:220px" } %>
     <!-- end of experience -->
 
     <!-- when physical item is chosen -->
-      <%= f.input :physical_item_height,:input_html => { value: "", id: "physical_item_height" ,class: "form-control", style: "width:150px;display:none"} %>
-      <%= f.input :physical_item_width, :input_html => { value: "", id: "physical_item_width", class: "form-control", style: "width:150px;display:none" } %>
-      <%= f.input :physical_item_weight,:input_html => { value: "", id: "physical_item_weight", class: "form-control", style: "width:150px;display:none" } %>
+      <%= f.input :physical_item_height,:input_html => { value: "", id: "physical_item_height" ,class: "form-control", style: "width:220px;display:none"} %>
+      <%= f.input :physical_item_width, :input_html => { value: "", id: "physical_item_width", class: "form-control", style: "width:220px;display:none" } %>
+      <%= f.input :physical_item_weight,:input_html => { value: "", id: "physical_item_weight", class: "form-control", style: "width:220px;display:none" } %>
     <!-- end of physical item -->
 
 
     <!-- when voucher is chosen -->
-      <%= f.input :voucher_expiration_date,:input_html => { type:"date", value: "", id: "voucher_expiration_date", class: "form-control date", style: "width:180px;display:none" } %>
+      <%= f.input :voucher_expiration_date,:input_html => { type:"date", value: "", id: "voucher_expiration_date", class: "form-control date", style: "width:220px;display:none" } %>
     <!-- end of voucher -->
 
   </div>
