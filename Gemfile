@@ -19,6 +19,7 @@ group :development, :test do
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-rspec', '2.5.0'
   gem 'guard-spork', '1.5.0'
+  gem 'shoulda-matchers'
 end
 
 group :test do
