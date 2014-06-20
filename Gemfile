@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'rails_12factor', group: :production
 gem 'rails', '4.1.1'
 gem 'thin'
 gem 'devise'
