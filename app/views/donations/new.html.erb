@@ -1,0 +1,103 @@
+<div class="page-header">
+  <h1>Create <small> a new donation</small></h1>
+</div>
+<%= simple_form_for @donation do |f| %>
+  <div class="form-group">
+    <%= f.input :title, input_html: { class: "form-control", style: "width:150px"} %>
+    <%= f.input :description,input_html: { class: "form-control", style: "width:150px" } %>
+    Choose a variation
+    <%= f.select(:donation_variation, ["Experience", "Physical Item", "Voucher"], class:"variation") %>
+
+    <!-- when experience is chosen -->
+      <%= f.input :experience_primary_contact_name, :input_html => { value: "", id: "experience_primary_contact_name", class: "form-control", style: "width:150px"}  %>
+      <%= f.input :experience_longitude, :input_html => { value: "", id: "experience_longitude",class: "form-control", style: "width:150px" } %>
+      <%= f.input :experience_latitude, :input_html => { value: "", id: "experience_latitude" ,class: "form-control", style: "width:150px" } %>
+    <!-- end of experience -->
+
+    <!-- when physical item is chosen -->
+      <%= f.input :physical_item_height,:input_html => { value: "", id: "physical_item_height" ,class: "form-control", style: "width:150px;display:none"} %>
+      <%= f.input :physical_item_width, :input_html => { value: "", id: "physical_item_width", class: "form-control", style: "width:150px;display:none" } %>
+      <%= f.input :physical_item_weight,:input_html => { value: "", id: "physical_item_weight", class: "form-control", style: "width:150px;display:none" } %>
+    <!-- end of physical item -->
+
+
+    <!-- when voucher is chosen -->
+      <%= f.input :voucher_expiration_date,:input_html => { type:"date", value: "", id: "voucher_expiration_date", class: "form-control date", style: "width:180px;display:none" } %>
+    <!-- end of voucher -->
+
+  </div>
+  <%= f.button :submit %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // NOT PROUD OF THIS CODE - Did not want to fight the simple_form gem at 2 a.m to support polymorphic associations on a weeknight haha
+
+    // initially hide Physical Item and Voucher inputs
+    $("label[for='physical_item_height']").hide()
+    $("label[for='physical_item_width']").hide()
+    $("label[for='physical_item_weight']").hide();
+    $("label[for='voucher_expiration_date']").hide();
+
+    $('select[name="donation[donation_variation]"').change(function(event) {
+      if(event.target.value === "Physical Item" ){
+        // hide Experience
+        $("label[for='experience_primary_contact_name']").hide()
+        $('input[name="donation[experience_primary_contact_name]"]').hide();
+        $("label[for='experience_longitude']").hide()
+        $('input[name="donation[experience_longitude]"]').hide();
+        $("label[for='experience_latitude']").hide()
+        $('input[name="donation[experience_latitude]"]').hide();
+        // Hide Voucher
+        $("label[for='voucher_expiration_date']").hide()
+        $('input[name="donation[voucher_expiration_date]"]').hide();
+        // Display Physical Item
+        $("label[for='physical_item_height']").show()
+        $('input[name="donation[physical_item_height]"]').show();
+        $("label[for='physical_item_width']").show()
+        $('input[name="donation[physical_item_width]"]').show();
+        $("label[for='physical_item_weight']").show()
+        $('input[name="donation[physical_item_weight]"]').show();
+      }
+
+      if(event.target.value === "Experience" ){
+        // show Experience
+        $("label[for='experience_primary_contact_name']").show()
+        $('input[name="donation[experience_primary_contact_name]"]').show();
+        $("label[for='experience_longitude']").show()
+        $('input[name="donation[experience_longitude]"]').show();
+        $("label[for='experience_latitude']").show()
+        $('input[name="donation[experience_latitude]"]').show();
+        // Hide Voucher
+        $("label[for='voucher_expiration_date']").hide()
+        $('input[name="donation[voucher_expiration_date]"]').hide();
+        // Hide Physical Item
+        $("label[for='physical_item_height']").hide()
+        $('input[name="donation[physical_item_height]"]').hide();
+        $("label[for='physical_item_width']").hide()
+        $('input[name="donation[physical_item_width]"]').hide();
+        $("label[for='physical_item_weight']").hide()
+        $('input[name="donation[physical_item_weight]"]').hide();
+      }
+      if(event.target.value === "Voucher" ){
+        // Hide Experience
+        $("label[for='experience_primary_contact_name']").hide()
+        $('input[name="donation[experience_primary_contact_name]"]').hide();
+        $("label[for='experience_longitude']").hide()
+        $('input[name="donation[experience_longitude]"]').hide();
+        $("label[for='experience_latitude']").hide()
+        $('input[name="donation[experience_latitude]"]').hide();
+        // Show Voucher
+        $("label[for='voucher_expiration_date']").show()
+        $('input[name="donation[voucher_expiration_date]"]').show();
+        // Hide Physical Item
+        $("label[for='physical_item_height']").hide()
+        $('input[name="donation[physical_item_height]"]').hide();
+        $("label[for='physical_item_width']").hide()
+        $('input[name="donation[physical_item_width]"]').hide();
+        $("label[for='physical_item_weight']").hide()
+        $('input[name="donation[physical_item_weight]"]').hide();
+      }
+    })
+  });
+</script>
